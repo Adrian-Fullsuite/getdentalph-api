@@ -1,4 +1,6 @@
-const createAppointment = (req, res) => {};
+const createAppointment = (req, res) => {
+  const { date_of_appointment, dental_clinic, time_of_appointment } = req.body;
+};
 
 const viewAppointment = (req, res) => {
   res.send(req.params.id);
