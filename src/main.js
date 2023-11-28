@@ -4,17 +4,22 @@ import customer from "./routes/customer.js";
 import dentist from "./routes/dentist.js";
 import transaction from "./routes/transaction.js";
 import authentication from "./routes/authentication.js";
+import benchmark from "express-status-monitor";
 
 const serverStart = performance.now();
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(benchmark());
 app.use(express.json());
 app.use(appointment);
 app.use(customer);
 app.use(dentist);
 app.use(transaction);
 app.use(authentication);
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

@@ -1,0 +1,18 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - duration: 60
+      arrivalRate: 10
+      rampTo: 50
+      name: "Warm Up"
+    - duration: 120
+      arrivalRate: 50
+      name: "Sustained max load"
+
+scenarios:
+  - flow:
+      - post:
+          url: "/customer/authenticate"
+          json:
+            email: "foo@email.com"
+            password: "encryptThis"
